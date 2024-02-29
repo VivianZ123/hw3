@@ -49,6 +49,8 @@ struct Node
  *
  */
 void llpivot(Node *&head, Node *&smaller, Node *&larger, int pivot);
+void insert(Node*& list, Node*& tail, Node* node);
+void llpivotHelper(Node* current, Node*& smaller, Node*& larger, Node*& smallerTail, Node*& largerTail, int pivot);
 
 /**
  * Given a linked list pointed to by head, removes (filters out) nodes
