@@ -86,7 +86,11 @@ int main(int argc, char* argv[])
     print(head);
 
     // Test out your linked list code
-
+    Node* new_head;
+    //auto pred = [](int val) -> bool { return val < 10; };
+    new_head=llfilter(head, pred);
+    cout << "Resulting list: ";
+    print(new_head);
 
 
     

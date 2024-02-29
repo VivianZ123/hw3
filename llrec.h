@@ -4,6 +4,7 @@
 #define NULL 0
 #endif
 
+
 /**
  * Node struct for both problems
  */
@@ -70,6 +71,9 @@ void llpivot(Node *&head, Node *&smaller, Node *&larger, int pivot);
  *
  */
 template <typename Comp>
+Node* llfilterHelper(Node* head, Comp pred);
+
+template <typename Comp>
 Node* llfilter(Node* head, Comp pred);
 
 //*****************************************************************************
@@ -78,13 +82,23 @@ Node* llfilter(Node* head, Comp pred);
 //*****************************************************************************
 
 template <typename Comp>
-Node* llfilter(Node* head, Comp pred)
-{
-    //*********************************************
-    // Provide your implementation below
-    //*********************************************
+Node* llfilterHelper(Node* head, Comp pred) {
+    if (head == nullptr) {
+        return nullptr;
+    }
+    head->next = llfilterHelper(head->next, pred);
+    if (pred(head->val)) {
+        Node* nextNode = head->next;
+        delete head;
+        return nextNode;
+    } else {
+        return head;
+    }
+}
 
-
+template <typename Comp>
+Node* llfilter(Node* head, Comp pred) {
+    return llfilterHelper(head, pred);
 }
 
 #endif
